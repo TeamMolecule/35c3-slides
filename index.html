@@ -45,7 +45,56 @@
 
 				<!-- HARDWARE -->
 				<section>Hardware</section>
-				<section>What is Glitching?</section>
+				<section>
+					<h2>What is Glitching?</h2>
+					<section>
+						<pre><code data-trim data-noescape>
+						if (*size < 0x200) {
+							return process_data(*size);
+						} else {
+							return 0;
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Compiles to...</h3>
+						<pre><code data-trim data-noescape>
+						<span id="asm-1" class="fragment" style="opacity:1;visibility:inherit;">lw $1, ($0)</span>
+						<span id="asm-2" class="fragment" style="opacity:1;visibility:inherit;">sltu3 $0, $1, 0x100</span>
+						<span id="asm-3" class="fragment" style="opacity:1;visibility:inherit;">beqz $0, .error</span>
+						<span id="asm-4" class="fragment" style="opacity:1;visibility:inherit;">bsr process_data</span>
+						.error:
+						<span id="asm-5" class="fragment" style="opacity:1;visibility:inherit;">ret</span>
+						</code></pre>
+						<table>
+							<tbody>
+								<tr>
+									<td>$0 = <span id="asm-r0">0x00810000</span></td>
+									<td>$1 = <span id="asm-r1">0x00000000</span></td>
+									<td>$pc = <span id="asm-pc">0x00800100</span></td>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Glitching</h3>
+						<pre><code data-trim data-noescape>
+						<span id="asm-g-1" class="fragment" style="opacity:1;visibility:inherit;">lw $1, ($0)</span>
+						<span id="asm-g-2" class="fragment" style="opacity:1;visibility:inherit;">sltu3 $0, $1, 0x100</span>
+						<span id="asm-g-3" class="fragment" style="opacity:1;visibility:inherit;">beqz $0, .error</span>
+						<span id="asm-g-4" class="fragment" style="opacity:1;visibility:inherit;">bsr process_data</span>
+						.error:
+						<span id="asm-g-5" class="fragment" style="opacity:1;visibility:inherit;">ret</span>
+						</code></pre>
+						<table>
+							<tbody>
+								<tr>
+									<td>$0 = <span id="asm-g-r0">0x00810000</span></td>
+									<td>$1 = <span id="asm-g-r1">0x00000000</span></td>
+									<td>$pc = <span id="asm-g-pc">0x00800100</span></td>
+							</tbody>
+						</table>
+					</section>
+				</section>
 				<section>Common Attack Types</section>
 				<section>Theory: Voltage Attack</section>
 				<section>Roadmap</section>
@@ -83,6 +132,87 @@
 				],
 				controls: false
 			});
+		</script>
+
+		<!-- Custom reveal handlers -->
+		<script>
+		Reveal.addEventListener('fragmentshown', function(event) {
+		    frag = event.fragment;
+		    switch (frag.id) {
+		    	case "asm-1": {
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-pc").innerHTML = "0x00800102";
+		    		break;
+		    	}
+		    	case "asm-2": {
+		    		document.getElementById("asm-1").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-r1").style.color = "#ff2c2d";
+		    		document.getElementById("asm-r1").innerHTML = "0x00000800";
+		    		document.getElementById("asm-pc").innerHTML = "0x00800104";
+		    		break;
+		    	}
+		    	case "asm-3": {
+		    		document.getElementById("asm-2").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-r1").style.color = "#ffffff";
+		    		document.getElementById("asm-r0").style.color = "#ff2c2d";
+		    		document.getElementById("asm-r0").innerHTML = "0x00000000";
+		    		document.getElementById("asm-pc").innerHTML = "0x00800106";
+		    		break;
+		    	}
+		    	case "asm-4": {
+		    		document.getElementById("asm-3").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-pc").innerHTML = "0x00800108";
+		    		document.getElementById("asm-r0").style.color = "#ffffff";
+		    		break;
+		    	}
+		    	case "asm-5": {
+		    		document.getElementById("asm-4").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-pc").innerHTML = "0x0080010C";
+		    		document.getElementById("asm-pc").style.color = "#ff2c2d";
+		    		break;
+		    	}
+		    	case "asm-g-1": {
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-g-pc").innerHTML = "0x00800102";
+		    		break;
+		    	}
+		    	case "asm-g-2": {
+		    		document.getElementById("asm-g-1").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-g-r1").style.color = "#ff2c2d";
+		    		document.getElementById("asm-g-r1").innerHTML = "0x00000800";
+		    		document.getElementById("asm-g-pc").innerHTML = "0x00800104";
+		    		break;
+		    	}
+		    	case "asm-g-3": {
+		    		document.getElementById("asm-g-2").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-g-r1").style.color = "#ffffff";
+		    		document.getElementById("asm-g-r0").style.color = "#17ff2e";
+		    		document.getElementById("asm-g-r0").innerHTML = "0x00000001";
+		    		document.getElementById("asm-g-pc").innerHTML = "0x00800106";
+		    		break;
+		    	}
+		    	case "asm-g-4": {
+		    		document.getElementById("asm-g-3").classList.remove("highlight-red");
+		    		frag.classList.add("highlight-red");
+		    		document.getElementById("asm-g-pc").innerHTML = "0x00800108";
+		    		document.getElementById("asm-g-r0").style.color = "#ffffff";
+		    		break;
+		    	}
+		    	case "asm-g-5": {
+		    		document.getElementById("asm-g-4").classList.remove("highlight-red");
+		    		document.getElementById("asm-g-pc").innerHTML = "0x00800200";
+		    		document.getElementById("asm-g-pc").style.color = "#17ff2e";
+		    		break;
+		    	}
+		    }
+		});
+		// TODO: add fragment hide so we can go backwards!
 		</script>
 	</body>
 </html>
