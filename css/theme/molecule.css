@@ -271,3 +271,11 @@ body {
 @media print {
   .backgrounds {
     background-color: #186d8a; } }
+
+.reveal mark {
+  background-color: #8badb7;
+}
+
+.reveal mark .error {
+  background-color: #ff2c2d;
+}

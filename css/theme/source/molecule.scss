@@ -47,3 +47,11 @@ section.has-light-background {
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+.reveal mark {
+  background-color: #8badb7;
+}
+
+.reveal mark .error {
+  background-color: #ff2c2d;
+}
