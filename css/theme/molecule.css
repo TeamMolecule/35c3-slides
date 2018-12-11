@@ -276,6 +276,6 @@ body {
   background-color: #8badb7;
 }
 
-.reveal mark .error {
+.reveal mark.error {
   background-color: #ff2c2d;
 }
