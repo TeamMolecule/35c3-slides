@@ -44,11 +44,21 @@
 				<section>Octopus (3)</section>
 
 				<!-- HARDWARE -->
-				<section>Hardware</section>
+				<section>
+					<h1>Hardware Hacking</h1>
+				</section>
 				<!-- What is Glitching? -->
 				<section>
 					<h2>What is Glitching?</h2>
 					<section>
+						<ul>
+							<li class="fragment">Introducing a software bug through hardware faults</li>
+							<li class="fragment">Many ways of doing so (voltage, reset, EMI, etc)</li>
+							<li class="fragment">Focus on <strong>voltage glitching</strong>: easiest to do</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Example Target Code</h3>
 						<pre><code data-trim data-noescape>
 						if (*size < 0x200) {
 							return process_data(*size);
@@ -312,12 +322,106 @@
 						</ul>
 					</section>
 				</section>
-				<section>Roadmap</section>
-				<section>Mapping out the Pins</section>
-				<section>Mapping out the Pins (2)</section>
-				<section>Mapping out the Pins (3)</section>
-				<section>Mapping out the Pins (4)</section>
-				<section>Mapping out the Pins (5)</section>
+				<!-- Roadmap -->
+				<section>
+					<h2>Roadmap</h2>
+					<ol>
+						<li class="fragment"><em>Where</em> to attack</li>
+						<li class="fragment"><em>What</em> to attack</li>
+						<li class="fragment">Automate until success</li>
+					</ol>
+				</section>
+				<!-- Mapping Pins -->
+				<section id="mapping-pins">
+					<section data-background="images/chip-top.png">
+						<h2>Where is the power source?</h2>
+						<ul>
+							<li class="fragment">Modern chips have dozens of power domains</li>
+							<li class="fragment">One power source is connected to the processor's transistors</li>
+							<li class="fragment">Each domain is connected to dozens of pins</li>
+							<li class="fragment">The chip has 724 pins!</li>
+							<li class="fragment">... but heuristics can help us narrow down the search</li>
+						</ul>
+					</section>
+					<section data-transition="fade">
+						<h3>PCB Cartography</h3>
+						<img class="stretch" src="images/chip-map-1.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Pick random pin from center</h3>
+						<img class="stretch" src="images/chip-map-2.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 2</h3>
+						<img class="stretch" src="images/chip-map-3.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Trace the signal</h3>
+						<img class="stretch" src="images/chip-map-4.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 3</h3>
+						<img class="stretch" src="images/chip-map-5.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Trace the signal</h3>
+						<img class="stretch" src="images/chip-map-6.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 4</h3>
+						<img class="stretch" src="images/chip-map-7.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 5</h3>
+						<img class="stretch" src="images/chip-map-8.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 6: trace ends!</h3>
+						<img class="stretch" src="images/chip-map-9.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Let's trace backwards</h3>
+						<img class="stretch" src="images/chip-map-10.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Mark all the vias</h3>
+						<img class="stretch" src="images/chip-map-11.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 5</h3>
+						<img class="stretch" src="images/chip-map-12.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 3</h3>
+						<img class="stretch" src="images/chip-map-13.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Trace the signal</h3>
+						<img class="stretch" src="images/chip-map-14.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 2</h3>
+						<img class="stretch" src="images/chip-map-15.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>Layer 1</h3>
+						<img class="stretch" src="images/chip-map-16.png" />
+					</section>
+					<section data-transition="fade">
+						<h3>We found 35 power pins!</h3>
+						<img class="stretch" src="images/chip-map-17.png" />
+					</section>
+					<section>
+						<ul>
+							<li>689/724 to go!</li>
+							<li class="fragment">Actually 245 are unconnected: no signal from Layer 1 to 2</li>
+							<li class="fragment">Actually 175 are to ground in Layer 1 or 2</li>
+							<li class="fragment">So only 269 pins left! Daunting, but doable in an afternoon.</li>
+							<li class="fragment">Next: there's about 8 power domains, we try them all!</li>
+						</ul>
+					</section>
+				</section>
+				<!-- What to attack -->
 				<section>Attack Plan</section>
 				<section>ChipWhisperer</section>
 				<section>Setup</section>
