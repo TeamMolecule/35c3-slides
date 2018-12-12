@@ -60,7 +60,7 @@
 					<section>
 						<h3>Example Target Code</h3>
 						<pre><code data-trim data-noescape>
-						if (*size < 0x200) {
+						if (*size < 256) {
 							return process_data(*size);
 						} else {
 							return 0;
@@ -411,20 +411,72 @@
 						<h3>We found 35 power pins!</h3>
 						<img class="stretch" src="images/chip-map-17.png" />
 					</section>
-					<section>
+					<section id="finding-power-domain">
 						<ul>
 							<li>689/724 to go!</li>
-							<li class="fragment">Actually 245 are unconnected: no signal from Layer 1 to 2</li>
-							<li class="fragment">Actually 175 are to ground in Layer 1 or 2</li>
+							<li class="fragment">245 are not connected: no signal from Layer 1 to 2</li>
+							<li class="fragment">175 are to ground in Layer 1 or 2</li>
 							<li class="fragment">So only 269 pins left! Daunting, but doable in an afternoon.</li>
 						</ul>
 					</section>
 					<section>
 						<img class="stretch" src="images/chip-balls.png" />
 					</section>
+					<section>
+						<p>Last hurdle: which is the right power domain?</p>
+					</section>
+					<section>
+						<h3>Write some simple counter incrementing code</h3>
+						<pre class="col"><code data-trim data-noescape>
+						repeat 10000000,end
+						add $0, 1
+						add $1, 1
+						add $2, 1
+						add $3, 1
+						add $4, 1
+						add $0, 1
+						add $1, 1
+						add $2, 1
+						end: add $3, 1
+						add $4, 1</code></pre>
+					</section>
+					<section>
+						<h3>Try glitching on each power domain...</h3>
+						<img class="stretch" src="images/find-power-domain-setup.jpg" />
+					</section>
+					<section id="a">
+						<h3>until the counter is corrupted</h3>
+						<img class="stretch" src="images/find-power-domain-result.jpg" />
+					</section>
 				</section>
 				<!-- What to attack -->
-				<section>Attack Plan</section>
+				<section id="what-to-attack">
+					<section>
+						<h2>What to attack?</h2>
+						<p>We can now inject logical bugs but how do we exploit it to run code?</p>
+						<p class="fragment">Bypass signature check? Don't have decrypted samples, hard to guess how signature is parsed</p>
+						<p class="fragment">Look at: boot partition header, which locates the bootloaders</p>
+						<p class="fragment">Unencrypted, unsigned, easy to understand</p>
+					</section>
+					<section>
+						<p>Look at partition header's size field</p>
+						<p class="fragment">Size field is checked to be <strong>&lt; 0xDE blocks</strong>.</p>
+						<p class="fragment">If check passes, bootloader is read for that many blocks.</p>
+						<p class="fragment">Otherwise, it halts.</p>
+					</section>
+					<section>
+						<h3>Plan of Action</h3>
+						<ul>
+							<li>Sniff Vita <-> external storage traffic</li>
+							<li>MOSFET (switch) connecting the power domain we found to GND</li>
+							<li>MOSFET controlled by FPGA, cuts off power for a short time to create glitch</li>
+						</ul>
+					</section>
+					<section>
+						<img class="stretch" src="images/glitch-plan-flowchart.png" />
+					</section>
+					</section>
+				</section>
 				<section>ChipWhisperer</section>
 				<section>Setup</section>
 				<section>Boot ROM</section>
