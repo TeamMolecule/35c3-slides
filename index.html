@@ -272,7 +272,7 @@
 					</section>
 					<section data-transition="fade">
 						<h3>A = 0, B = 0: Stable</h3>
-						<img class="stretch" src="images/theory-2-1.png" />
+						<img class="stretch" id="img-theory-2" src="images/theory-2-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Switching</h3>
@@ -288,11 +288,11 @@
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Stable</h3>
-						<img class="stretch" src="images/theory-6-1.png" />
+						<img class="stretch" id="img-theory-6" src="images/theory-6-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Glitch Failed</h3>
-						<img class="stretch" src="images/theory-7-1.png" />
+						<img class="stretch" id="img-theory-7" src="images/theory-7-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Stable</h3>
@@ -451,6 +451,22 @@
 				],
 				controls: false
 			});
+		</script>
+		<script>
+			var flip_images = [
+				document.getElementById("img-theory-2"),
+				document.getElementById("img-theory-6"),
+				document.getElementById("img-theory-7")
+			];
+			function flipImages() {
+				for (var i = 0; i < flip_images.length; i++) {
+					url = flip_images[i].src;
+					res = url.match(/^(.*)theory-(\d+)-(\d+).png$/)
+					url = res[1] + "theory-" + res[2] + "-" + (parseInt(res[3])+1) % 2 + ".png";
+					flip_images[i].src = url;
+				}
+			}
+			setInterval(flipImages, 500);
 		</script>
 	</body>
 </html>
