@@ -83,6 +83,7 @@
 									<td>$0 = 0x00810000</td>
 									<td>$1 = 0x00000000</td>
 									<td>$pc = 0x00800100</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -102,6 +103,7 @@
 									<td>$0 = 0x00810000</td>
 									<td><mark>$1 = 0x00004000</mark></td>
 									<td>$pc = 0x00800102</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -121,6 +123,7 @@
 									<td><mark>$0 = 0x00000000</mark></td>
 									<td>$1 = 0x00004000</td>
 									<td>$pc = 0x00800104</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -140,6 +143,7 @@
 									<td>$0 = 0x00000000</td>
 									<td>$1 = 0x00004000</td>
 									<td><mark>$pc = 0x00800108</mark></td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -159,6 +163,7 @@
 									<td>$0 = 0x00810000</td>
 									<td>$1 = 0x00000000</td>
 									<td>$pc = 0x00800100</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -178,6 +183,7 @@
 									<td>$0 = 0x00810000</td>
 									<td><mark>$1 = 0x00004000</mark></td>
 									<td>$pc = 0x00800102</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -197,6 +203,7 @@
 									<td><mark class="error">$0 = 0x00000001</mark></td>
 									<td>$1 = 0x00004000</td>
 									<td>$pc = 0x00800104</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -216,6 +223,7 @@
 									<td>$0 = 0x00000000</td>
 									<td>$1 = 0x00004000</td>
 									<td><mark class="error">$pc = 0x00801000</mark></td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
@@ -233,7 +241,7 @@
 					</section>
 					<section>
 						<h2>NAND Logic</h2>
-						<p>C = !(A & B)</p>
+						<p>C = ~(A & B)</p>
 						<table>
 							<thead>
 								<tr>
@@ -268,39 +276,39 @@
 					</section>
 					<section data-transition="fade">
 						<h3>A = 0, B = 0: Switching</h3>
-						<img class="stretch" src="images/theory-1.png" />
+						<img class="plain stretch" src="images/theory-1.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 0, B = 0: Stable</h3>
-						<img class="stretch" id="img-theory-2" src="images/theory-2-0.png" />
+						<img class="plain stretch" id="img-theory-2" src="images/theory-2-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Switching</h3>
-						<img class="stretch" src="images/theory-3.png" />
+						<img class="plain stretch" src="images/theory-3.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Stable</h3>
-						<img class="stretch" src="images/theory-4.png" />
+						<img class="plain stretch" src="images/theory-4.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Switching</h3>
-						<img class="stretch" src="images/theory-5.png" />
+						<img class="plain stretch" src="images/theory-5.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Stable</h3>
-						<img class="stretch" id="img-theory-6" src="images/theory-6-0.png" />
+						<img class="plain stretch" id="img-theory-6" src="images/theory-6-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Glitch Failed</h3>
-						<img class="stretch" id="img-theory-7" src="images/theory-7-0.png" />
+						<img class="plain stretch" id="img-theory-7" src="images/theory-7-0.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Stable</h3>
-						<img class="stretch" src="images/theory-4.png" />
+						<img class="plain stretch" src="images/theory-4.png" />
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Glitch Successful</h3>
-						<img class="stretch" src="images/theory-8.png" />
+						<img class="plain stretch" src="images/theory-8.png" />
 					</section>
 					<section>
 						<h2>Takeaway</h2>
