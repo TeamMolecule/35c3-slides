@@ -475,17 +475,96 @@
 					<section>
 						<img class="stretch" src="images/glitch-plan-flowchart.png" />
 					</section>
+				</section>
+				</section>
+				<!-- Putting it Together -->
+				<section id="together">
+					<section>
+						<h1>Putting it together...</h1>
+					</section>
+					<section data-background="images/chipwhisperer.jpg">
+						<h3>ChipWhisperer</h3>
+						<ul>
+							<li class="fragment">Open source hardware hacking platform</li>
+							<li class="fragment">Scriptable in Python for automation</li>
+							<li class="fragment">FPGA for control</li>
+							<li class="fragment">MOSFET for glitching</li>
+							<li class="fragment">Added: Custom trigger pattern for storage traffic</li>
+						</ul>
+					</section>
+					<section data-background="images/psvemmc.jpg">
+						<h3>psvemmc</h3>
+						<ul>
+							<li class="fragment">Custom design</li>
+							<li class="fragment">Solder all wires from Vita to one board</li>
+							<li class="fragment">Switch for storage dumper/flasher mode and glitch target mode</li>
+							<li class="fragment">Glitch target mode connects to ChipWhisperer's 20-pin port</li>
+						</ul>
+					</section>
+					<section data-background="images/glitching-wiring.jpg">
+					</section>
+					<section data-background="images/glitching-setup.jpg">
+					</section>
+					<section id="hash">
+						<pre style="font-size:1.5em;text-align:center;box-shadow:none;">d14585f6defa18fa<br>8222e683bb8b53ee<br>aa5bbe7c22f8d513<br>633d5e1701d8858f</pre>
 					</section>
 				</section>
-				<section>ChipWhisperer</section>
-				<section>Setup</section>
-				<section>Boot ROM</section>
-				<section>Thanks</section>
+				<!-- Thanks -->
+				<section id="thanks">
+					<ul>
+						<li><a href="https://twitter.com/nickls1">@NickLS1</a> for supplying modded boards</li>
+						<li><a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a> for the PCB delayer</li>
+						<li><a href="https://twitter.com/hedgeberg">@hedgeberg</a> for glitching advice and ideas</li>
+						<li><a href="https://github.com/motoharu-gosuto">motoharu</a> and <a href="https://github.com/xerpi">xerpi</a> for reverse engineering help</a></li>
+						<li>... and anyone we missed!</li>
+					</ul>
+				</section>
 
 				<!-- CONCLUSION -->
-				<section>One Last Thing...</section>
-				<section>AA?</section>
-				<section>Links + Questions</section>
+				<section id="conclusion">
+					<section>
+						<h1>Conclusions</h1>
+					</section>
+					<section>
+						<p>Sony had a history of crypto failures...</p>
+						<ul>
+							<li class="fragment"><strong>PSP</strong>: 1.00 had no code signing checks</li>
+							<li class="fragment"><strong>PS3</strong>: ECDSA reused "random" data, private keys factored</li>
+							<li class="fragment"><strong>PS Classic</strong>: updater private keys accidentally included on all shipped devices</li>
+						</ul>
+					</section>
+					<section>
+						<p>Vita is Sony's best security work to date.</p>
+						<ul>
+							<li>Secure boot is simple and has a tiny attack surface.</li>
+							<li>Dedicated crypto processor keeps threat model simple.</li>
+							<li>Modern exploit mitigation implements on the application processor.</li>
+						</ul>
+					</section>
+					<section>
+						<h1>BUT...</h1>
+					</section>
+					<section>
+						<h2>There is a slight issue in their choice of bootloader decryption key</h2>
+						<h2 class="fragment"><strong>It's only a single byte repeating...</strong></h2>
+					</section>
+					<section>
+						<h3>We brute forced it before the glitch attack</h2>
+						<h3 class="fragment">But for legal reasons, we cannot share it with you</h2>
+					</section>
+					<section>
+						<h2>So here is an unrelated picture of a random Amazon search</h2>
+					</section>
+					<section>
+						<img class="stretch" src="images/batteries.jpg" />
+					</section>
+					<section>
+						<h2>Resources + Questions</h2>
+						<ul>
+							<li>something</li>
+						</ul>
+					</section>
+				</section>
 			</div>
 		</div>
 
