@@ -81,9 +81,6 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-1.png" />
-						<aside class="notes">
-
-						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-2.png" />
@@ -132,9 +129,64 @@
 					</section>
 				</section>
 
-				<section>Hardware Architecture</section>
-				<section>Toshiba MeP</section>
-				<section>Toshiba MeP (2)</section>
+				<section id="hardware-architecture">
+					<section>
+						<h2>Hardware Architecture</h2>
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/hardware-architecture-1.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/hardware-architecture-2.png" />
+						<aside class="notes">
+							We only care about the orange box.
+						</aside>
+					</section>
+					<section>
+						<img class="plain stretch" style="background:none;" src="images/toshiba-mep.png" />
+						<aside class="notes">
+							Custom RISC from Toshiba. Used in automobile parking assist cameras and Toshiba microprocessors.
+						</aside>
+					</section>
+					<section>
+						<h3>A quick Google search...</h3>
+						<img src="images/toshiba-mep-datasheets.png" />
+						<aside class="notes">
+							Very little documentation. Most information from leaked datasheets found on Google.
+						</aside>
+					</section>
+					<section>
+						<h3>Thanks GPLv3!</h3>
+						<img src="images/toshiba-mep-gcc.png" />
+						<aside class="notes">
+							As well as GCC/binutils port from Redhat.
+						</aside>
+					</section>
+					<section>
+						<h3>We built an IDA plugin...</h3>
+						<img src="images/toshiba-mep-idp.png" />
+					</section>
+					<section>
+						<h3>an emulator...</h3>
+						<!--- TODO: provide image for emulator -->
+					</section>
+					<section>
+						<h3>and even a decompiler!</h3>
+						<img src="images/toshiba-mep-decompiler.png" />
+					</section>
+					<section>
+						<h3>What we learned</h3>
+						<ul>
+							<li class="fragment">Instruction set inspired by MIPS</li>
+							<li class="fragment">No virtual memory or memory protection</li>
+							<li class="fragment">Not hardened for security!</li>
+						</ul>
+						<aside class="notes">
+							Data can be executed without any extra work. Used non-secure processor design for a security processor.
+						</aside>
+					</section>
+				</section>
+
 				<section>F00D Software</section>
 				<section>Module Loading</section>
 				<section>Octopus</section>
