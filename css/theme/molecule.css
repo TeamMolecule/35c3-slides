@@ -55,7 +55,7 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 2.5em; }
+  font-size: 2em; }
 
 .reveal h2 {
   font-size: 1.6em; }
@@ -273,9 +273,7 @@ body {
     background-color: #186d8a; } }
 
 .reveal mark {
-  background-color: #8badb7;
-}
+  background-color: #8badb7; }
 
 .reveal mark.error {
-  background-color: #ff2c2d;
-}
+  background-color: #ff2c2d; }
