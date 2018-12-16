@@ -75,9 +75,15 @@
 				<section id="security-architecture">
 					<section>
 						<h2>Security Architecture</h2>
+						<aside class="notes">
+							Hacked dates there for people reviewing the slides. Don't spend any time on them.
+						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-1.png" />
+						<aside class="notes">
+
+						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-2.png" />
@@ -96,8 +102,36 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-7.png" />
+						<aside class="notes">
+							TrustZone is useless, does not shrink the attack surface to F00D
+						</aside>
 					</section>
 				</section>
+
+				<section id="f00d">
+					<section>
+						<h2>F00D</h2>
+						<aside class="notes">
+							Called F00D from ELF identifier. Main focus. Separate processor running a proprietary instruction set.
+						</aside>
+					</section>
+					<section>
+						<h3>F00D Kernel</h3>
+						<p class="fragment">
+							<em>Content keys</em> protect secure assets such as games and firmware data.
+						</p>
+					</section>
+					<section>
+						<h3>F00D Loader</h3>
+						<p class="fragment">
+							<em>Meta keys</em> protect the content keys and allows revoking compromised content keys.
+						</p>
+						<aside class="notes">
+							Includes boot ROM and second stage loader.
+						</aside>
+					</section>
+				</section>
+
 				<section>Hardware Architecture</section>
 				<section>Toshiba MeP</section>
 				<section>Toshiba MeP (2)</section>
