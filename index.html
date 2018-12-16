@@ -28,7 +28,7 @@
 				<section>
 					<h1>Viva la Vita Vida</h1>
 				</section>
-				
+
 				<section>About Us</section>
 				<section>Overview</section>
 
@@ -70,7 +70,7 @@
 						}
 						</code></pre>
 					</section>
-					<section>
+					<section data-transition="none">
 						<h3>Compiles to...</h3>
 						<pre><code data-trim data-noescape>
 						<mark>lw $1, ($0)</mark>
@@ -83,9 +83,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00810000</td>
-									<td>$1 = 0x00000000</td>
-									<td>$pc = 0x00800100</td>
+									<td>$0<br>0x00810000</td>
+									<td>$1<br>0x00000000</td>
+									<td>$pc<br>0x00800100</td>
 								</tr>
 							</tbody>
 						</table>
@@ -103,9 +103,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00810000</td>
-									<td><mark>$1 = 0x00004000</mark></td>
-									<td>$pc = 0x00800102</td>
+									<td>$0<br>0x00810000</td>
+									<td><mark>$1<br>0x00004000</mark></td>
+									<td>$pc<br>0x00800102</td>
 								</tr>
 							</tbody>
 						</table>
@@ -123,9 +123,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td><mark>$0 = 0x00000000</mark></td>
-									<td>$1 = 0x00004000</td>
-									<td>$pc = 0x00800104</td>
+									<td><mark>$0<br>0x00000000</mark></td>
+									<td>$1<br>0x00004000</td>
+									<td>$pc<br>0x00800104</td>
 								</tr>
 							</tbody>
 						</table>
@@ -143,14 +143,14 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00000000</td>
-									<td>$1 = 0x00004000</td>
-									<td><mark>$pc = 0x00800108</mark></td>
+									<td>$0<br>0x00000000</td>
+									<td>$1<br>0x00004000</td>
+									<td><mark>$pc<br>0x00800108</mark></td>
 								</tr>
 							</tbody>
 						</table>
 					</section>
-					<section>
+					<section data-transition="none">
 						<h3>With a glitch...</h3>
 						<pre><code data-trim data-noescape>
 						<mark>lw $1, ($0)</mark>
@@ -163,9 +163,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00810000</td>
-									<td>$1 = 0x00000000</td>
-									<td>$pc = 0x00800100</td>
+									<td>$0<br>0x00810000</td>
+									<td>$1<br>0x00000000</td>
+									<td>$pc<br>0x00800100</td>
 								</tr>
 							</tbody>
 						</table>
@@ -183,9 +183,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00810000</td>
-									<td><mark>$1 = 0x00004000</mark></td>
-									<td>$pc = 0x00800102</td>
+									<td>$0<br>0x00810000</td>
+									<td><mark>$1<br>0x00004000</mark></td>
+									<td>$pc<br>0x00800102</td>
 								</tr>
 							</tbody>
 						</table>
@@ -203,9 +203,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td><mark class="error">$0 = 0x00000001</mark></td>
-									<td>$1 = 0x00004000</td>
-									<td>$pc = 0x00800104</td>
+									<td><mark class="error">$0<br>0x00000001</mark></td>
+									<td>$1<br>0x00004000</td>
+									<td>$pc<br>0x00800104</td>
 								</tr>
 							</tbody>
 						</table>
@@ -223,9 +223,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>$0 = 0x00000000</td>
-									<td>$1 = 0x00004000</td>
-									<td><mark class="error">$pc = 0x00801000</mark></td>
+									<td>$0<br>0x00000000</td>
+									<td>$1<br>0x00004000</td>
+									<td><mark class="error">$pc<br>0x00801000</mark></td>
 								</tr>
 							</tbody>
 						</table>
@@ -317,8 +317,8 @@
 						<h2>Takeaway</h2>
 						<ul>
 							<li>Voltage glitching (mostly) only affects gate outputs...</li>
-							<li class="fragment">that are switching ...</li>
-							<li class="fragment">from 0 to 1 ...</li>
+							<li class="fragment">that are switching...</li>
+							<li class="fragment">from 0 to 1...</li>
 							<li class="fragment">at the precise moment your glitch is injected</li>
 							<li class="fragment"><strong>Good news</strong>: most system state isn't corrupted</li>
 						</ul>
@@ -328,6 +328,7 @@
 						<ul>
 							<li>Control <em>when</em> and <em>for how long</em> the glitch occurs</li>
 							<li class="fragment">Too soon: no effect</li>
+							<li class="fragment">Too late: unpredictable behavior</li>
 							<li class="fragment">Too short: no effect</li>
 							<li class="fragment">Too long: system shuts down</li>
 						</ul>
@@ -491,7 +492,6 @@
 						<img class="plain stretch" style="background:none;" src="images/glitch-plan-flowchart.png" />
 					</section>
 				</section>
-				</section>
 				<!-- Putting it Together -->
 				<section id="together">
 					<section>
@@ -524,16 +524,6 @@
 						<pre style="font-size:1.5em;text-align:center;box-shadow:none;">d14585f6defa18fa<br>8222e683bb8b53ee<br>aa5bbe7c22f8d513<br>633d5e1701d8858f</pre>
 					</section>
 				</section>
-				<!-- Thanks -->
-				<section id="thanks">
-					<ul>
-						<li><a href="https://twitter.com/nickls1">@NickLS1</a> for supplying modded boards</li>
-						<li><a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a> for the PCB delayer</li>
-						<li><a href="https://twitter.com/hedgeberg">@hedgeberg</a> for glitching advice and ideas</li>
-						<li><a href="https://github.com/motoharu-gosuto">motoharu</a> and <a href="https://github.com/xerpi">xerpi</a> for reverse engineering help</a></li>
-						<li>... and anyone we missed!</li>
-					</ul>
-				</section>
 
 				<!-- CONCLUSION -->
 				<section id="conclusion">
@@ -561,10 +551,12 @@
 					</section>
 					<section>
 						<h2>There is a slight issue in their choice of bootloader decryption key</h2>
-						<h2 class="fragment">Which protects every. single. content. key. in. the. system.</h2>
 					</section>
 					<section>
-						<h2><strong>It is just a single byte repeating...</strong></h2>
+						<h2>Which protects every. single. content. key. in. the. system.</h2>
+					</section>
+					<section>
+						<h2><em>It is just a single byte repeating...</em></h2>
 					</section>
 					<section>
 						<h3>We brute forced it before the glitch attack</h2>
@@ -576,7 +568,17 @@
 					<section>
 						<img class="stretch" src="images/batteries.jpg" />
 					</section>
-					<section>
+					<!-- Thanks -->
+					<section id="thanks">
+						<ul>
+							<li><a href="https://twitter.com/nickls1">@NickLS1</a> for supplying modded boards</li>
+							<li><a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a> for the PCB delayer</li>
+							<li><a href="https://twitter.com/hedgeberg">@hedgeberg</a> for glitching advice and ideas</li>
+							<li><a href="https://github.com/motoharu-gosuto">motoharu</a> and <a href="https://github.com/xerpi">xerpi</a> for reverse engineering help</a></li>
+							<li>... and anyone we missed!</li>
+						</ul>
+					</section>
+					<section id="end">
 						<h2>Resources + Questions</h2>
 						<ul>
 							<li>something</li>
