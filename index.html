@@ -21,6 +21,29 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 	</head>
+	<!-- unify colourscheme for charting -->
+	<!-- wednesday -->
+	<!-- hardware architecture -->
+	<!-- talk about less architecture -->
+	<!-- first set of concentrics are mostly a set of "history" lesson -->
+	<!-- meh-p -->
+	<!-- domains -->
+	<!-- and revoking -->
+	<!-- fact check toshiba mep usecases -->
+	<!-- block diagram we invented -->
+	<!-- change kirk2 crypto engine -->
+	<!-- Kermit custom IC, rest is not interesting -->
+	<!-- CGEN - no mention -->
+	<!-- pacing is very fast -->
+	<!-- correct disjoint between the mep details and software attack -->
+	<!-- crypto engine blackbox -->
+	<!-- F00D -->
+	<!-- high priority: clean up graph -->
+	<!-- work some ideas for continuing through the disjoint. no fear to embrace that disjoint either-->
+	<!-- replace Hardware Architecture with Kermit -->
+	
+	<!-- not -->
+	
 	<body>
 		<div class="reveal">
 			<div class="slides">
@@ -190,69 +213,54 @@
 				<section id="f00d-software">
 					<section>
 						<h2>F00D Software</h2>
-					</section>						
-					<section>
+					</section>
+					<section data-transition="none">
 							<h3>Applet loading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-1.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-1.png" />
+							<h3>Applet loading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-2.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-2.png" />
+							<h3>Applet loading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-3.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-3.png" />
+							<h3>Applet loading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-4.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-4.png" />
+							<h3>Applet loading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-5.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-5.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-6.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-7.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-loading-8.png" />
-					</section>
-					<section>
 							<h3>Applet RPC</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-6.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-rpc-1.png" />
+							<h3>Applet RPC</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-7.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-rpc-2.png" />
+							<h3>Applet RPC</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-8.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-rpc-3.png" />
+							<h3>Applet RPC</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-9.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-rpc-4.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-rpc-5.png" />
-					</section>
-					<section>
 							<h3>Applet unloading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-10.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-unloading-1.png" />
+							<h3>Applet unloading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-11.png" />
 					</section>
 					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-unloading-2.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-unloading-3.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-unloading-4.png" />
-					</section>
-					<section data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/f00d-applet-unloading-5.png" />
+							<h3>Applet unloading</h3>
+							<img class="plain stretch" style="background:none;" src="images/f00d-applet-12.png" />
 					</section>
 				</section>
 				
@@ -919,11 +927,19 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+					{ src: 'plugin/multiplex/client.js', async: true }
 				],
 				controls: false,
 				fragmentInURL: true,
-				transitionSpeed: 'fast'
+				transitionSpeed: 'fast',
+				multiplex: {
+					// Example values. To generate your own, see the socket.io server instructions.
+					secret: 15449890873897909324, // null so the clients do not have control of the master presentation
+					id: 'c70ce034cb820a81', // id, obtained from socket.io server
+					url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh/' // Location of your socket.io server
+				},
 			});
 		</script>
 		<script>
