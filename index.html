@@ -288,11 +288,27 @@
 					<section>
 						<h2>Examining our attack surface</h2>
 					</section>
-					<ul>
-						<li class="fragment"></li>
-					</ul>
+					<section>
+						<h3>Opportunities(need better name)</h3>
+						<ul>
+							<li class="fragment">We control all input into F00D</li>
+							<li class="fragment">Documentation on memory regions</li>
+							<li class="fragment">Can attack Applet lifecycle</li>
+							<li class="fragment">Can also attack RPC calls within applets</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Hazards</h3>
+						<ul>
+							<li class="fragment">Signed Executables</li>
+							<li class="fragment">Encrypted executables</li>
+							<li class="fragment">Effectively a black box</li>
+						</ul>
+						<p class="fragment">
+							Ideally we want to read F00D SRAM to enable a targeted attack. 
+						</p>
+					</section>
 				</section>
-				<section>Module Loading</section>
 				<section>Octopus</section>
 				<section>Octopus (2)</section>
 				<section>Octopus (3)</section>
