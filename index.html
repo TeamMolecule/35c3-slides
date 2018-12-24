@@ -310,7 +310,7 @@
 					</section>
 				</section>
 
-				<section id="module-loading-attack">
+				<section id="module-loading-info">
 					<section data-transition="none">
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-4.png" />
@@ -325,15 +325,97 @@
 					<section>
 						<h3>ARM -> F00D</h3>
 						<p class="fragment">ARM operates with virtual memory whilst F00D does not.</p>
-						<p class="fragment">Virtual memory <strong>not</strong> guaranteed to be backed by continious physical memory.</p>
+						<p class="fragment">Virtual memory is <strong>not</strong> guaranteed to be backed by continious physical memory.</p>
 						<p class="fragment">Copying every memory transaction to continious physical memory would be expensive.</p>
 						<p class="fragment">There needs to be a better way.</p>
 					</section>
+					<section data-transition="none">
+							<img class="plain stretch" style="background:none;" src="images/octopus-1.png" />
+					</section>
+					<section data-transition="none">
+							<img class="plain stretch" style="background:none;" src="images/octopus-2.png" />
+					</section>
+					<section data-transition="none">
+							<img class="plain stretch" style="background:none;" src="images/module-loading-1.png" />
+					</section>
 				</section>
 
-				<section>Octopus</section>
-				<section>Octopus (2)</section>
-				<section>Octopus (3)</section>
+				<section id="octopus-pre">
+					<section>
+						<h2>A Fatal Flaw</h2>
+						<img class="plain" style="background:none;" src="images/octopus-emoji.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/module-loading-1.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-bug-1.png" />
+					</section>
+					<section>
+						<p>F00D kernel does <strong>not</strong> blacklist its own SRAM!</p>
+						<p class="fragment">Data is copied to its internal memory still, so no leak.</p>
+						<p class="fragment">Data is still signature checked, so this is useless.</p>
+					</section>
+				</section>
+
+				<section id="octopus-main">
+					<section>
+						<h2>Or is it?</h2>
+					</section>
+					<section>
+						<p>What if the chunk of memory in SRAM matches the original?</p>
+						<p class="fragment">Signature check succeeds and we continue as normal.</p>
+						<p class="fragment">Additionally, we learn the contents of that part of SRAM.</p>
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-bug-2.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-1.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-2.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-3.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-4.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-5.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-6.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-7.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-8.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-9.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-10.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-11.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-12.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-13.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-14.png" />
+					</section>
+					<section data-transition="none">
+						<img class="plain stretch" style="background:none;" src="images/octopus-process-15.png" />
+					</section>
+				</section>
 
 				<!-- HARDWARE -->
 				<section id="hardware">
