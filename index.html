@@ -205,7 +205,7 @@
 						<!--- TODO: provide image for emulator -->
 					</section>
 					<section>
-						<h3>and even a decompiler!</h3>
+						<h3>and even a "decompiler"!</h3>
 						<img src="images/toshiba-mep-decompiler.png" />
 					</section>
 					<section>
@@ -658,66 +658,100 @@
 						</table>
 					</section>
 					<section data-transition="fade">
+						<h3>CMOS in 5 minutes</h3>
+						<ul>
+							<li class="fragment">Transistors are switches turned on/off by voltage at "gate"</li>
+							<li class="fragment">"Complementary" means upper turn off with high voltage. Lower turns on.</li>
+						</ul>
+					</section>
+					<section data-transition="fade">
 						<h3>A = 0, B = 0: Switching</h3>
 						<img class="plain stretch" src="images/theory-1.png" />
 						<aside class="notes">
-							Transistor like switches. Low voltage turns upper switches on. High voltage turns on lower ones.
+							Here: moment A and B go low.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 0, B = 0: Stable</h3>
 						<img class="plain stretch" id="img-theory-2" src="images/theory-2-0.png" />
 						<aside class="notes">
-							Upper open, lower closed. Steady state: circuit from source to output.
+							Small period of time pass. Upper open, lower closed. Current flows from source to output.
 						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>CMOS in 5 minutes</h3>
+						<ul>
+							<li>Transistors are switches turned on/off by voltage at "gate"</li>
+							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
+							<li class="fragment">Switching does not happen instantly.</li>
+						</ul>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Switching</h3>
 						<img class="plain stretch" src="images/theory-3.png" />
 						<aside class="notes">
-							Top two closed, expect output to immediately change to 0. Capacitance in parallel to transistors prevent it.
+							Next: A, B go high. Top two closed, expect output to immediately change to 0. But transistors do not change immediately, there is some leakage. Small period of time where A=1,B=1,C=1.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Stable</h3>
 						<img class="plain stretch" src="images/theory-4.png" />
 						<aside class="notes">
-							After small window of switching time, output is 0 as expected.
+							After small window of switching time, output is 0 as expected. Excess current drained by bottom gates opening.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Switching</h3>
 						<img class="plain stretch" src="images/theory-5.png" />
 						<aside class="notes">
-							When top B gate opens, we expect to see output immediately change to 1. But first we must charge the capacitors.
+							Next: When top B gate opens, we expect to see output immediately change to 1. There is some leakage with bottom gates closing. Small period of time where C=0.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Stable</h3>
 						<img class="plain stretch" id="img-theory-6" src="images/theory-6-0.png" />
 						<aside class="notes">
-							Once charged we output 1 as expected.
+							Once switching completes we output 1 as expected.
 						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>CMOS in 5 minutes</h3>
+						<ul>
+							<li>Transistors are switches turned on/off by voltage at "gate"</li>
+							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
+							<li>Switching does not happen instantly.</li>
+							<li class="fragment"><strong>Glitching</strong> involves connecting voltage source to ground for a short time</li>
+						</ul>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Glitch Failed</h3>
 						<img class="plain stretch" id="img-theory-7" src="images/theory-7-0.png" />
 						<aside class="notes">
-							Assume we glitch at this moment. Failed because the charged capacitors can supply output for a small amount of time.
+							Next: Assume we glitch at this moment. Failed because gate still leaking some current, can supply output voltage for a short amount of time.
 						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>CMOS in 5 minutes</h3>
+						<ul>
+							<li>Transistors are switches turned on/off by voltage at "gate"</li>
+							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
+							<li>Switching does not happen instantly.</li>
+							<li><strong>Glitching</strong> involves connecting voltage source to ground for a short time</li>
+							<li class="fragment"><em>When</em> is important...</li>
+						</ul>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 1: Stable</h3>
 						<img class="plain stretch" src="images/theory-4.png" />
 						<aside class="notes">
-							Go back.
+							Go back to A=1, B=1.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>A = 1, B = 0: Glitch Successful</h3>
 						<img class="plain stretch" src="images/theory-8.png" />
 						<aside class="notes">
-							Glitching it at the moment the output tries to switch to 1, it fails because no source and no charged capacitor to supply current.
+							Glitching it at the moment the output tries to switch to 1. Success because so supply or leakage from gate.
 						</aside>
 					</section>
 					<section>
@@ -755,9 +789,9 @@
 					<section data-background="images/chip-top.png">
 						<h2>Where is the power source?</h2>
 						<ul>
-							<li class="fragment">Modern chips have dozens of power domains</li>
+							<li class="fragment">Modern chips have dozens of voltage rails</li>
 							<li class="fragment">One power source is connected to the processor's transistors</li>
-							<li class="fragment">Each domain is connected to dozens of pins</li>
+							<li class="fragment">Each rail is connected to dozens of pins</li>
 							<li class="fragment">The chip has 724 pins!</li>
 							<li class="fragment">... but heuristics can help us narrow down the search</li>
 						</ul>
@@ -765,6 +799,12 @@
 					<section data-transition="fade">
 						<h3>PCB Cartography</h3>
 						<img class="stretch" src="images/chip-map-1.png" />
+						<br>
+						<caption>Image credit: <a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a></caption>
+
+						<aside class="notes">
+							Data pins to to pad. Power pins go to copper area. Each voltage rail has its own area.
+						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>Remove solder mask</h3>
@@ -873,7 +913,7 @@
 							Replace solder mask.
 						</aside>
 					</section>
-					<section id="finding-power-domain">
+					<section id="finding-voltage-rail">
 						<ul>
 							<li>689/724 to go!</li>
 							<li class="fragment">245 are not connected: no signal from Layer 1 to 2</li>
@@ -885,7 +925,7 @@
 						<img class="stretch" src="images/chip-balls.png" />
 					</section>
 					<section>
-						<p>Last hurdle: which is the right power domain?</p>
+						<p>Last hurdle: which is the right voltage rail?</p>
 						<aside class="notes">
 							Found 9 candidates.
 						</aside>
@@ -906,7 +946,7 @@
 						add $4, 1</code></pre>
 					</section>
 					<section>
-						<h3>Try glitching on each power domain...</h3>
+						<h3>Try glitching on each voltage rail...</h3>
 						<img class="stretch" src="images/find-power-domain-setup.jpg" />
 					</section>
 					<section id="a">
@@ -920,7 +960,7 @@
 						<h2>What to attack?</h2>
 						<p>We can now inject logical bugs but how do we exploit it to run code?</p>
 						<p class="fragment">Bypass signature check? Don't have decrypted samples, hard to guess how signature is parsed</p>
-						<p class="fragment">Look at: boot partition header, which locates the bootloaders</p>
+						<p class="fragment">Easier target: boot partition header, which locates the bootloaders</p>
 						<p class="fragment">Unencrypted, unsigned, easy to understand</p>
 
 						<aside class="notes">
@@ -932,12 +972,16 @@
 						<p class="fragment">Size field is checked to be <strong>&lt; 0xDE blocks</strong>.</p>
 						<p class="fragment">If check passes, bootloader is read for that many blocks.</p>
 						<p class="fragment">Otherwise, it halts.</p>
+
+						<aside class="notes">
+							Gives us a textbook buffer overflow.
+						</aside>
 					</section>
 					<section>
 						<h3>Plan of Action</h3>
 						<ul>
 							<li>Sniff Vita <-> external storage traffic</li>
-							<li>MOSFET (switch) connecting the power domain we found to GND</li>
+							<li>MOSFET (switch) connecting the voltage rail we found to GND</li>
 							<li>MOSFET controlled by FPGA, cuts off power for a short time to create glitch</li>
 						</ul>
 					</section>
@@ -1045,6 +1089,7 @@
 					<!-- Thanks -->
 					<section id="thanks">
 						<ul>
+							<li><a href="https://twitter.com/qlutoo">@qlutoo</a> for help reversing F00D</li>
 							<li><a href="https://twitter.com/nickls1">@NickLS1</a> for supplying modded boards</li>
 							<li><a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a> for the PCB delayer</li>
 							<li><a href="https://twitter.com/hedgeberg">@hedgeberg</a> for glitching advice and ideas</li>
@@ -1053,9 +1098,11 @@
 						</ul>
 					</section>
 					<section id="end">
-						<h2>Resources + Questions</h2>
+						<h2>Resources</h2>
 						<ul>
-							<li>something</li>
+							<li><a href="https://wiki.henkaku.xyz">HENkaku Wiki</a>: reverse engineering Vita</li>
+							<li><a href="https://github.com/teammolecule/">Github</a>: Crypto tools, CW fork, etc</li>
+							<li><a href="https://vitasdk.org">VitaSDK</a>: open Vita toolchain</li>
 						</ul>
 					</section>
 				</section>
