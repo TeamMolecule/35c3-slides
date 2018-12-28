@@ -95,6 +95,9 @@
 				<!-- SOFTWARE -->
 				<section id="software">
 					<h1>Software Hacking</h1>
+					<aside class="notes">
+						talk about how we LEARNED to hack a subset of vita
+					</aside>
 				</section>
 
 				<section id="security-architecture">
@@ -106,6 +109,7 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-1.png" />
+						<aside class="notes">Privilege levels. each allows you to do/access more</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-2.png" />
@@ -121,6 +125,9 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-6.png" />
+						<aside class="notes">NOT trusted by sony, acts only as a proxy for f00d.
+							come back to f00d
+						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-7.png" />
@@ -134,7 +141,10 @@
 					<section>
 						<h2>F00D</h2>
 						<aside class="notes">
-							Called F00D from ELF identifier. Main focus. Separate processor running a proprietary instruction set.
+							main topic.
+							security processor.
+							Separate processor running a proprietary instruction set.
+							come back to hardware and why we named it that
 						</aside>
 					</section>
 					<section>
@@ -142,6 +152,10 @@
 						<p class="fragment">
 							<em>Content keys</em> protect secure assets such as games and firmware data.
 						</p>
+						<aside class="notes">
+							Implements the DRM
+							nothing unauthorised runs
+						</aside>
 					</section>
 					<section>
 						<h3>F00D Loader</h3>
@@ -149,11 +163,22 @@
 							<em>Meta keys</em> protect the content keys and allows revoking compromised content keys.
 						</p>
 						<aside class="notes">
-							Includes boot ROM and second stage loader.
+							Protects F00D kernel, Includes boot ROM and second stage loader.
 						</aside>
 					</section>
 					<section>
 						<h3>How to attack?</h3>
+						<aside class="notes">
+							how do we gain access to these privilege levels
+
+							is proprietary security hardware
+							hardware architecture NOT confused with yifan attack talk
+							learn WHAT we are running on
+
+							learn HOW the software work
+
+							learn HOW to break it
+						</aside>
 						<p class="fragment">
 							We need more information:
 						</p>
@@ -171,6 +196,9 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/hardware-architecture-1.png" />
+						<aside class="notes">
+							SYSTEM DIAGRAM FOR SoC
+						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/hardware-architecture-2.png" />
@@ -181,7 +209,14 @@
 					<section>
 						<img class="plain stretch" style="background:none;" src="images/toshiba-mep.png" />
 						<aside class="notes">
-							Custom RISC from Toshiba. Used in automobile parking assist cameras and Toshiba microprocessors.
+							Custom RISC from Toshiba. 
+							NAME f00d is from ELF identifer.
+							Used in automobile parking assist cameras and Toshiba microprocessors.
+							Another set of these processors used for CODEC on vita also
+							NOT IMPORTANT, we only care about the f00d implementation
+							PRIVATE RAM
+							MAIN PROCESSOR CANT ACCESS
+							HOW DO WE LEARN?
 						</aside>
 					</section>
 					<section>
@@ -205,6 +240,9 @@
 					<section>
 						<h3>an emulator...</h3>
 						<img src="images/toshiba-mep-emulator.png" />
+						<aside class="notes">
+							learn about weird quirks
+						</aside>
 					</section>
 					<section>
 						<h3>and even a "decompiler"!</h3>
@@ -226,19 +264,31 @@
 				<section id="f00d-software">
 					<section>
 						<h2>F00D Software</h2>
+						<aside class="notes">Inspection we learn about secure kernel</aside>
+						<aside class="notes">Sony implement applets</aside>
 					</section>
 					<section>
 						<h3>Applets</h3>
 						<ul>
 							<li class="fragment">Loaded only when required</li>
-							<li class="fragment">Can only have a single applet loaded</li>
 							<li class="fragment">RPC interface to interact</li>
+							<li class="fragment">Can only have a single applet loaded</li>
 							<li class="fragment">Applets are (of course) <em>signed and encrypted</em></li>
 						</ul>
+						<aside class="notes">
+							EXECUTABLES that encapsulate some functionality.
+							EXAMPLES: encrpytion, signature, DRM
+							if you want decrypt u load decrypt applet
+							lifecycle IMPORTANT
+						</aside>
 					</section>
 					<section data-transition="none">
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-1.png" />
+							<aside class="notes">
+								LIFECYCLE.
+								REPEAT: TZ useless, no checks just straight proxy.
+							</aside>
 					</section>
 					<section data-transition="none">
 							<h3>Applet loading</h3>
@@ -263,6 +313,9 @@
 					<section data-transition="none">
 							<h3>Applet RPC</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-7.png" />
+							<aside class="notes">
+								communication is with f00d kernel! not an applet
+							</aside>
 					</section>
 					<section data-transition="none">
 							<h3>Applet RPC</h3>
@@ -291,12 +344,22 @@
 						<h2>Examining our attack surface</h2>
 					</section>
 					<section>
-						<h3>Opportunities(need better name)</h3>
+						<h3>What we know</h3>
 						<ul>
 							<li class="fragment">We control all input into F00D</li>
-							<li class="fragment">Documentation on memory regions</li>
-							<li class="fragment">Can attack Applet lifecycle</li>
-							<li class="fragment">Can also attack RPC calls within applets</li>
+							<li class="fragment">Memory layout</li>
+							<li class="fragment">No security features</li>
+							<li class="fragment">Understand Applet lifecycle</li>
+							<li class="fragment">RPC calls within applets</li>
+							<aside class="notes">
+								we can pass in malicious data to kernel or applet.
+
+								memory layout is known from datasheet + elf headers.
+
+								no security. code execution trivial with nearly any bug.
+
+
+							</aside>
 						</ul>
 					</section>
 					<section>
@@ -309,6 +372,12 @@
 						<p class="fragment">
 							Ideally we want to read F00D SRAM to enable a targeted attack. 
 						</p>
+						<aside class="notes">
+							PRIVATE MEMORY.
+							Dump code.
+							To EXAMINE code and attack.
+							Each step we want to LEARN more.
+						</aside>
 					</section>
 				</section>
 
@@ -316,6 +385,10 @@
 					<section data-transition="none">
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-4.png" />
+							<aside class="notes">
+								BREAK into lifecycle applying what we know
+								dont know the DETAILS
+							</aside>
 					</section>
 					<section data-transition="none">
 							<h3>Applet loading</h3>
@@ -323,6 +396,9 @@
 					</section>
 					<section data-gif="repeat" data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/we-need-to-go-deeper.gif" />
+							<aside class="notes">
+								We need to UNDERSTAND what is going on here
+							</aside>
 					</section>
 					<section>
 						<h3>ARM -> F00D</h3>
@@ -330,15 +406,30 @@
 						<p class="fragment">Virtual memory is <strong>not</strong> guaranteed to be backed by continious physical memory.</p>
 						<p class="fragment">Copying every memory transaction to continious physical memory would be expensive.</p>
 						<p class="fragment">There needs to be a better way.</p>
+						<aside class="notes">
+							talk about the COMPLICATION between two.
+
+							TALK about layout SHORTLY.
+						</aside>
 					</section>
 					<section data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/paddr-1.png" />
+							<aside notes="class">
+								Pass corresponding physical address TO f00d.
+							</aside>
 					</section>
 					<section data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/paddr-2.png" />
 					</section>
 					<section data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/module-loading-1.png" />
+							<aside class="notes">
+								Can apply to f00d.
+
+								ELIMATES copying.
+
+								We have LEARNED how data is passed to f00d.
+							</aside>
 					</section>
 				</section>
 
@@ -352,6 +443,13 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/octopus-bug-1.png" />
+						<aside class="notes">
+							PRIVATE SRAM
+
+							GO THROUGH LIFECYCLE
+
+							SIGNATURE CHECK on EXECUTABLE
+						</aside>
 					</section>
 					<section>
 						<p>F00D kernel does <strong>not</strong> blacklist its own SRAM!</p>
@@ -426,7 +524,7 @@
 								</p>&mdash; nowhere everywhere (@pomfpomfpomf3) <a href="https://twitter.com/pomfpomfpomf3/status/832806488221446145?ref_src=twsrc%5Etfw">February 18, 2017</a>
 							</blockquote>
 						</center>
-						<p class="fragment">"Congratulation! At last you get the plaintext of the PS Vita Secure Kernel!"</p>
+						<p>"Congratulation! At last you get the plaintext of the PS Vita Secure Kernel!"</p>
 					</section>
 				</section>
 
