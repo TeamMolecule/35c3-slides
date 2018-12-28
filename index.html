@@ -125,14 +125,16 @@
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-6.png" />
-						<aside class="notes">NOT trusted by sony, acts only as a proxy for f00d.
+						<aside class="notes">
+							NOT trusted by sony, acts only as a proxy for f00d.<br>
 							come back to f00d
 						</aside>
 					</section>
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/security-architecture-7.png" />
 						<aside class="notes">
-							TrustZone is useless, does not shrink the attack surface to F00D
+							Can model TZ and ARM kernel together. same privilege levels<br>
+							Talk about we want to attack F00D
 						</aside>
 					</section>
 				</section>
@@ -141,9 +143,9 @@
 					<section>
 						<h2>F00D</h2>
 						<aside class="notes">
-							main topic.
-							security processor.
-							Separate processor running a proprietary instruction set.
+							main topic.<br>
+							security processor.<br>
+							Separate processor running a proprietary instruction set.<br>
 							come back to hardware and why we named it that
 						</aside>
 					</section>
@@ -169,14 +171,14 @@
 					<section>
 						<h3>How to attack?</h3>
 						<aside class="notes">
-							how do we gain access to these privilege levels
-
-							is proprietary security hardware
-							hardware architecture NOT confused with yifan attack talk
-							learn WHAT we are running on
-
-							learn HOW the software work
-
+							how do we gain access to these privilege levels<br>
+							<br>
+							is proprietary security hardware<br>
+							hardware architecture NOT confused with yifan attack talk<br>
+							learn WHAT we are running on<br>
+							<br>
+							learn HOW the software work<br>
+							<br>
 							learn HOW to break it
 						</aside>
 						<p class="fragment">
@@ -209,13 +211,11 @@
 					<section>
 						<img class="plain stretch" style="background:none;" src="images/toshiba-mep.png" />
 						<aside class="notes">
-							Custom RISC from Toshiba. 
-							NAME f00d is from ELF identifer.
-							Used in automobile parking assist cameras and Toshiba microprocessors.
-							Another set of these processors used for CODEC on vita also
-							NOT IMPORTANT, we only care about the f00d implementation
-							PRIVATE RAM
-							MAIN PROCESSOR CANT ACCESS
+							Custom RISC from Toshiba. <br>
+							NAME f00d is from ELF identifer.<br>
+							Used in automobile parking assist cameras and Toshiba microprocessors.<br>
+							PRIVATE RAM<br>
+							MAIN PROCESSOR CANT ACCESS<br>
 							HOW DO WE LEARN?
 						</aside>
 					</section>
@@ -276,9 +276,9 @@
 							<li class="fragment">Applets are (of course) <em>signed and encrypted</em></li>
 						</ul>
 						<aside class="notes">
-							EXECUTABLES that encapsulate some functionality.
-							EXAMPLES: encrpytion, signature, DRM
-							if you want decrypt u load decrypt applet
+							EXECUTABLES that encapsulate some functionality.<br>
+							EXAMPLES: encrpytion, signature, DRM<br>
+							if you want decrypt u load decrypt applet<br>
 							lifecycle IMPORTANT
 						</aside>
 					</section>
@@ -286,7 +286,7 @@
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-1.png" />
 							<aside class="notes">
-								LIFECYCLE.
+								LIFECYCLE.<br>
 								REPEAT: TZ useless, no checks just straight proxy.
 							</aside>
 					</section>
@@ -352,13 +352,10 @@
 							<li class="fragment">Understand Applet lifecycle</li>
 							<li class="fragment">RPC calls within applets</li>
 							<aside class="notes">
-								we can pass in malicious data to kernel or applet.
-
-								memory layout is known from datasheet + elf headers.
-
-								no security. code execution trivial with nearly any bug.
-
-
+								we can pass in malicious data to kernel or applet.<br>
+								<br>
+								memory layout is known from datasheet + elf headers.<br>
+								<br>
 							</aside>
 						</ul>
 					</section>
@@ -373,9 +370,9 @@
 							Ideally we want to read F00D SRAM to enable a targeted attack. 
 						</p>
 						<aside class="notes">
-							PRIVATE MEMORY.
-							Dump code.
-							To EXAMINE code and attack.
+							PRIVATE MEMORY.<br>
+							Dump code.<br>
+							To EXAMINE code and attack.<br>
 							Each step we want to LEARN more.
 						</aside>
 					</section>
@@ -386,7 +383,7 @@
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-4.png" />
 							<aside class="notes">
-								BREAK into lifecycle applying what we know
+								BREAK into lifecycle applying what we know<br>
 								dont know the DETAILS
 							</aside>
 					</section>
@@ -394,27 +391,21 @@
 							<h3>Applet loading</h3>
 							<img class="plain stretch" style="background:none;" src="images/f00d-applet-attack-1.png" />
 					</section>
-					<section data-gif="repeat" data-transition="none">
-							<img class="plain stretch" style="background:none;" src="images/we-need-to-go-deeper.gif" />
-							<aside class="notes">
-								We need to UNDERSTAND what is going on here
-							</aside>
-					</section>
 					<section>
 						<h3>ARM -> F00D</h3>
 						<p class="fragment">ARM operates with virtual memory whilst F00D does not.</p>
-						<p class="fragment">Virtual memory is <strong>not</strong> guaranteed to be backed by continious physical memory.</p>
-						<p class="fragment">Copying every memory transaction to continious physical memory would be expensive.</p>
+						<p class="fragment">Virtual memory is <strong>not</strong> guaranteed to be backed by contiguous physical memory.</p>
+						<p class="fragment">Copying every memory transaction to contiguous physical memory would be expensive.</p>
 						<p class="fragment">There needs to be a better way.</p>
 						<aside class="notes">
-							talk about the COMPLICATION between two.
-
+							talk about the COMPLICATION between two.<br>
+							<br>
 							TALK about layout SHORTLY.
 						</aside>
 					</section>
 					<section data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/paddr-1.png" />
-							<aside notes="class">
+							<aside class="notes">
 								Pass corresponding physical address TO f00d.
 							</aside>
 					</section>
@@ -424,10 +415,10 @@
 					<section data-transition="none">
 							<img class="plain stretch" style="background:none;" src="images/module-loading-1.png" />
 							<aside class="notes">
-								Can apply to f00d.
-
-								ELIMATES copying.
-
+								Can apply to f00d.<br>
+								<br>
+								ELIMATES copying.<br>
+								<br>
 								We have LEARNED how data is passed to f00d.
 							</aside>
 					</section>
@@ -444,10 +435,10 @@
 					<section data-transition="none">
 						<img class="plain stretch" style="background:none;" src="images/octopus-bug-1.png" />
 						<aside class="notes">
-							PRIVATE SRAM
-
-							GO THROUGH LIFECYCLE
-
+							PRIVATE SRAM<br>
+							<br>
+							GO THROUGH LIFECYCLE<br>
+							<br>
 							SIGNATURE CHECK on EXECUTABLE
 						</aside>
 					</section>
@@ -516,15 +507,20 @@
 						<img class="plain stretch" style="background:none;" src="images/octopus-process-15.png" />
 					</section>
 					<section data-transition="none" id="tweet">
-						<h4>CTF get</h4>
-						<center>
-							<blockquote class="twitter-tweet" data-lang="en">
-								<p lang="und" dir="ltr">
-									<a href="https://t.co/7EPV3i6DPn">pic.twitter.com/7EPV3i6DPn</a>
-								</p>&mdash; nowhere everywhere (@pomfpomfpomf3) <a href="https://twitter.com/pomfpomfpomf3/status/832806488221446145?ref_src=twsrc%5Etfw">February 18, 2017</a>
-							</blockquote>
-						</center>
-						<p>"Congratulation! At last you get the plaintext of the PS Vita Secure Kernel!"</p>
+						<pre style="font-size: 0.40em;box-shadow: none;background-color: rgba(0, 0, 0, 0.3);text-align:center;">
+
+00007820  0d f7 3e 8b 33 dc 4e 62  99 37 c3 9c 6f 4f 43 43  |..>.3.Nb.7..oOCC|
+00007830  00 01 00 00 00 01 00 01  04 00 00 00 00 00 00 00  |................|
+00007840  43 6f 6e 67 72 61 74 75  6c 61 74 69 6f 6e 73 21  |Congratulations!|
+00007850  20 41 74 20 6c 61 73 74  20 79 6f 75 20 67 65 74  | At last you get|
+00007860  20 74 68 65 20 70 6c 61  69 6e 74 65 78 74 20 6f  | the plaintext o|
+00007870  66 20 74 68 65 20 50 53  20 56 69 74 61 20 53 65  |f the PS Vita Se|
+00007880  63 75 72 65 20 4b 65 72  6e 65 6c 21 00 00 00 00  |cure Kernel!....|
+00007890  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+000078a0  00 00 00 00 00 00 00 00  15 00 00 00 10 94 80 00  |................|
+000078b0  80 00 00 00 c0 16 03 40  68 c0 02 40 04 00 00 00  |.......@h..@....|
+
+</pre>
 					</section>
 				</section>
 
@@ -783,69 +779,69 @@
 							Computer built from logic gates such as this.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>CMOS in 5 minutes</h3>
 
 						<aside class="notes">
 							Logic gates are built from transistors.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/transistors.png" />
 						<aside class="notes">
 							Top turns off when gate is high, bottom turns on when gate is high
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 0, B = 0</h3>
 						<img class="plain stretch" id="img-theory-2" src="images/theory-2-0.png" />
 						<aside class="notes">
 							Top open, bottom closed: current flows from source to output
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 0</h3>
 						<img class="plain stretch" id="img-theory-6" src="images/theory-6-0.png" />
 						<aside class="notes">
 							One open, one closed: still flows from source to output
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 1</h3>
 						<img class="plain stretch" src="images/theory-4.png" />
 						<aside class="notes">
 							No source to output. Excess current goes to drain. Leaky faucet.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>Now a glitch...</h3>
 
 						<aside class="notes">
 							Logic gates are built from transistors.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 0</h3>
 						<img class="plain stretch" id="img-theory-6-2" src="images/theory-6-0.png" />
 						<aside class="notes">
 							Same as before
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 0</h3>
 						<img class="plain stretch" id="img-theory-7" src="images/theory-7-0.png" />
 						<aside class="notes">
 							Instant shorted. Leaky faucet still drips.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 0: Output Incorrect!</h3>
 						<img class="plain stretch" src="images/theory-8.png" />
 						<aside class="notes">
 							Now C is low, incorrect.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h3>A = 1, B = 0: Restored</h3>
 						<img class="plain stretch" id="img-theory-6-3" src="images/theory-6-0.png" />
 						<aside class="notes">
@@ -862,23 +858,23 @@
 							<li class="fragment">But the error can propagate</li>
 						</ul>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/nand-1.png" />
 
 						<aside class="notes">
 							Symbol for NAND gate. Arbitrary logic. Each implemented with CMOS.
 						</aside>
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/nand-2.png" />
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/nand-3.png" />
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/nand-4.png" />
 					</section>
-					<section data-transition="fade">
+					<section data-transition="none">
 						<img class="plain stretch" src="images/nand-5.png" />
 
 						<aside class="notes">
