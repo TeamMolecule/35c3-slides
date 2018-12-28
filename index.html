@@ -599,6 +599,9 @@
 								</tr>
 							</tbody>
 						</table>
+						<aside class="notes">
+							sltu = set less than unsigned
+						</aside>
 					</section>
 					<section data-transition="none">
 						<h3>Running it...</h3>
@@ -777,124 +780,120 @@
 						</table>
 
 						<aside class="notes">
-							Computer built from logic gates such as this. Logic gates are built from transistors.
+							Computer built from logic gates such as this.
 						</aside>
 					</section>
 					<section data-transition="fade">
 						<h3>CMOS in 5 minutes</h3>
-						<ul>
-							<li class="fragment">Transistors are switches turned on/off by voltage at "gate"</li>
-							<li class="fragment">"Complementary" means upper turn off with high voltage. Lower turns on.</li>
-						</ul>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 0, B = 0: Switching</h3>
-						<img class="plain stretch" src="images/theory-1.png" />
+
 						<aside class="notes">
-							Here: moment A and B go low.
+							Logic gates are built from transistors.
 						</aside>
 					</section>
 					<section data-transition="fade">
-						<h3>A = 0, B = 0: Stable</h3>
+						<img class="plain stretch" src="images/transistors.png" />
+						<aside class="notes">
+							Top turns off when gate is high, bottom turns on when gate is high
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>A = 0, B = 0</h3>
 						<img class="plain stretch" id="img-theory-2" src="images/theory-2-0.png" />
 						<aside class="notes">
-							Small period of time pass. Upper open, lower closed. Current flows from source to output.
+							Top open, bottom closed: current flows from source to output
 						</aside>
 					</section>
 					<section data-transition="fade">
-						<h3>CMOS in 5 minutes</h3>
-						<ul>
-							<li>Transistors are switches turned on/off by voltage at "gate"</li>
-							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
-							<li class="fragment">Switching does not happen instantly.</li>
-						</ul>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 1: Switching</h3>
-						<img class="plain stretch" src="images/theory-3.png" />
-						<aside class="notes">
-							Next: A, B go high. Top two closed, expect output to immediately change to 0. But transistors do not change immediately, there is some leakage. Small period of time where A=1,B=1,C=1.
-						</aside>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 1: Stable</h3>
-						<img class="plain stretch" src="images/theory-4.png" />
-						<aside class="notes">
-							After small window of switching time, output is 0 as expected. Excess current drained by bottom gates opening.
-						</aside>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 0: Switching</h3>
-						<img class="plain stretch" src="images/theory-5.png" />
-						<aside class="notes">
-							Next: When top B gate opens, we expect to see output immediately change to 1. There is some leakage with bottom gates closing. Small period of time where C=0.
-						</aside>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 0: Stable</h3>
+						<h3>A = 1, B = 0</h3>
 						<img class="plain stretch" id="img-theory-6" src="images/theory-6-0.png" />
 						<aside class="notes">
-							Once switching completes we output 1 as expected.
+							One open, one closed: still flows from source to output
 						</aside>
 					</section>
 					<section data-transition="fade">
-						<h3>CMOS in 5 minutes</h3>
-						<ul>
-							<li>Transistors are switches turned on/off by voltage at "gate"</li>
-							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
-							<li>Switching does not happen instantly.</li>
-							<li class="fragment"><strong>Glitching</strong> involves connecting voltage source to ground for a short time</li>
-						</ul>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 0: Glitch Failed</h3>
-						<img class="plain stretch" id="img-theory-7" src="images/theory-7-0.png" />
-						<aside class="notes">
-							Next: Assume we glitch at this moment. Failed because gate still leaking some current, can supply output voltage for a short amount of time.
-						</aside>
-					</section>
-					<section data-transition="fade">
-						<h3>CMOS in 5 minutes</h3>
-						<ul>
-							<li>Transistors are switches turned on/off by voltage at "gate"</li>
-							<li>"Complementary" means upper turn off with high voltage. Lower turns on.</li>
-							<li>Switching does not happen instantly.</li>
-							<li><strong>Glitching</strong> involves connecting voltage source to ground for a short time</li>
-							<li class="fragment"><em>When</em> is important...</li>
-						</ul>
-					</section>
-					<section data-transition="fade">
-						<h3>A = 1, B = 1: Stable</h3>
+						<h3>A = 1, B = 1</h3>
 						<img class="plain stretch" src="images/theory-4.png" />
 						<aside class="notes">
-							Go back to A=1, B=1.
+							No source to output. Excess current goes to drain. Leaky faucet.
 						</aside>
 					</section>
 					<section data-transition="fade">
-						<h3>A = 1, B = 0: Glitch Successful</h3>
+						<h3>Now a glitch...</h3>
+
+						<aside class="notes">
+							Logic gates are built from transistors.
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>A = 1, B = 0</h3>
+						<img class="plain stretch" id="img-theory-6-2" src="images/theory-6-0.png" />
+						<aside class="notes">
+							Same as before
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>A = 1, B = 0</h3>
+						<img class="plain stretch" id="img-theory-7" src="images/theory-7-0.png" />
+						<aside class="notes">
+							Instant shorted. Leaky faucet still drips.
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>A = 1, B = 0: Output Incorrect!</h3>
 						<img class="plain stretch" src="images/theory-8.png" />
 						<aside class="notes">
-							Glitching it at the moment the output tries to switch to 1. Success because so supply or leakage from gate.
+							Now C is low, incorrect.
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>A = 1, B = 0: Restored</h3>
+						<img class="plain stretch" id="img-theory-6-3" src="images/theory-6-0.png" />
+						<aside class="notes">
+							We must restore it or system shuts down.
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<h3>Propagating the error</h3>
+
+						<ul>
+							<li class="fragment">We caused one NAND gate to have incorrect output</li>
+							<li class="fragment">but only for a small amount of time!</li>
+							<li class="fragment">If we short for too long, system shuts off</li>
+							<li class="fragment">But the error can propagate</li>
+						</ul>
+					</section>
+					<section data-transition="fade">
+						<img class="plain stretch" src="images/nand-1.png" />
+
+						<aside class="notes">
+							Symbol for NAND gate. Arbitrary logic. Each implemented with CMOS.
+						</aside>
+					</section>
+					<section data-transition="fade">
+						<img class="plain stretch" src="images/nand-2.png" />
+					</section>
+					<section data-transition="fade">
+						<img class="plain stretch" src="images/nand-3.png" />
+					</section>
+					<section data-transition="fade">
+						<img class="plain stretch" src="images/nand-4.png" />
+					</section>
+					<section data-transition="fade">
+						<img class="plain stretch" src="images/nand-5.png" />
+
+						<aside class="notes">
+							Ideal case. Reality: 3 ways of getting 0, 1 way of getting 1.
 						</aside>
 					</section>
 					<section>
 						<h2>Takeaway</h2>
 						<ul>
-							<li>Voltage glitching (mostly) only affects gate outputs...</li>
-							<li class="fragment">that are switching...</li>
-							<li class="fragment">from 0 to 1...</li>
-							<li class="fragment">at the precise moment your glitch is injected</li>
-							<li class="fragment"><strong>Good news</strong>: most system state isn't corrupted</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Timing is important</h2>
-						<ul>
-							<li>Control <em>when</em> and <em>for how long</em> the glitch occurs</li>
-							<li class="fragment">Too soon: no effect</li>
-							<li class="fragment">Too late: unpredictable behavior</li>
-							<li class="fragment">Too short: no effect</li>
-							<li class="fragment">Too long: system shuts down</li>
+							<li>Voltage glitching can cause incorrect gate outputs</li>
+							<li class="fragment">But only for a short time!</li>
+							<li class="fragment">The incorrect output has to propagate</li>
+							<li class="fragment">Lots of opportunities for system to "correct" itself</li>
+							<li class="fragment">Ideal: one error causes a lot of gate changes</li>
+							<li class="fragment">Example: arithmetic operations, AES hardware, etc</li>
 						</ul>
 					</section>
 				</section>
@@ -1217,7 +1216,6 @@
 							<li><a href="http://wololo.net/talk/viewtopic.php?p=402775">byteful</a> for the PCB delayer</li>
 							<li><a href="https://twitter.com/hedgeberg">@hedgeberg</a> for glitching advice and ideas</li>
 							<li><a href="https://github.com/motoharu-gosuto">motoharu</a> and <a href="https://github.com/xerpi">xerpi</a> for reverse engineering help</a></li>
-							<li>... and anyone we missed!</li>
 						</ul>
 					</section>
 					<section id="end">
@@ -1264,6 +1262,8 @@
 			var flip_images = [
 				document.getElementById("img-theory-2"),
 				document.getElementById("img-theory-6"),
+				document.getElementById("img-theory-6-2"),
+				document.getElementById("img-theory-6-3"),
 				document.getElementById("img-theory-7")
 			];
 			function flipImages() {
